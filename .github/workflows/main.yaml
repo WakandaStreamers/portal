@@ -34,7 +34,7 @@ jobs:
           server: 'ftp.wakandastreamers.com.br'
           username: 'wakandastreamers'
           password: 'tjuDRSWwkARJ'
-          protocol: ftps
+          protocol: ftps-legacy
 
 
     
