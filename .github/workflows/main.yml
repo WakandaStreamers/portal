@@ -2,22 +2,24 @@ name: Deploy to
 on:
   push:
 jobs:
-  gitToFTP:
-    name: FTP-Deploy-Action
+  build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./static
     steps:
-    - uses: actions/checkout@staging
-        
-    - name: List output files
-      run: ls
-      
-    - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      env:
-        FTP_SERVER: '${{ secrets.SFTP_SERVER }}'
-        FTP_USERNAME: '${{ secrets.SFTP_USERNAME }}'
-        FTP_PASSWORD: '${{ secrets.SFTP_PASSWORD }}'
-        LOCAL_DIR: static
-        METHOD: sftp
-        PORT: 22
-        ARGS: --delete
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
+
+    - name: Install Composer Dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: FTP Deploy to WP Engine (Staging)
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      with:
+        ftp-server: ${{ secrets.SFTP_SERVER }}
+        ftp-username: ${{ secrets.SFTP_USER }}
+        ftp-password: ${{ secrets.SFTP_PASSWORD }}
+        local-dir: ./static/
