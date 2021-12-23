@@ -31,9 +31,9 @@ jobs:
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         with:
-          ftp_server: 'ftp.wakandastreamers.com.br'
-          ftp_username: 'wakandastreamers'
-          ftp_password: 'tjuDRSWwkARJ'
+          ftp_server: ftp.wakandastreamers.com.br
+          ftp_username: wakandastreamers
+          ftp_password: tjuDRSWwkARJ
           local_dir: ./static/
           remote_dir: /home/wakandastreamers/wakandastreamers.com.br
           method: sftp
