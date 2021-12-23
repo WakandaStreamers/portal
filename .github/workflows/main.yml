@@ -6,7 +6,6 @@ jobs:
     name: FTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
         
     - name: List output files
       run: ls
