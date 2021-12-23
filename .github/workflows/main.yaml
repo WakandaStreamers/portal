@@ -28,7 +28,7 @@ jobs:
           FTP_USERNAME: ${{ secrets.SFTP_USER }}
           FTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
           LOCAL_DIR: static
-          REMOTE_DIR: ${{ secrets.REMOTE_DIR }}
+          REMOTE_DIR: '${{ secrets.REMOTE_DIR }}/env/stg'
           METHOD: sftp
           PORT: 22
 
