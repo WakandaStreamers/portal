@@ -1,25 +1,18 @@
-name: FTP Test
+name: Deploy to 
 on:
   push:
 jobs:
-  ci:
+  deploy:
+    name: 🚀 Deploy website every commit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: 📂 Sync files
+        uses: ./
         with:
-          ftp-server: ${{ secrets.SFTP_SERVER }} 
-          ftp-username: ${{ secrets.SFTP_USER }} 
-          ftp-password: ${{ secrets.SFTP_PASSWORD }} 
-          local-dir: static
-      # - run: echo "ls" | ftp ${{ env.FTP_USER_NAME }}:${{ env.FTP_USER_PASS }}@ftp-server/ftp
-      # - name: file*delete.md
-      #   uses: ./.github/actions/ftp-delete-action
-      #   with:
-      #     host: ftp-server
-      #     user: ${{ env.FTP_USER_NAME }}
-      #     password: ${{ env.FTP_USER_PASS }}
-      #     workingDir: data
-      #     ignoreSsl: 1
-      #     remoteFiles: "file*.!(keep).md"
+          server: ftp.wakandastreamers.com.br
+          username: wakandastreamers
+          password: ${{ secrets.SFTP_PASSWORD }}
+          protocol: ftps
