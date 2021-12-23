@@ -31,11 +31,11 @@ jobs:
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
-          FTP_SERVER: ftp.wakandastreamers.com.br
-          FTP_USERNAME: wakandastreamers
-          FTP_PASSWORD: tjuDRSWwkARJ
+          FTP_SERVER: ${{ secrets.SFTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.SFTP_USER }}
+          FTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
           LOCAL_DIR: static
-          REMOTE_DIR: /home/wakandastreamers/staging.wakandastreamers.com.br/env/stg
+          REMOTE_DIR: ${{ secrets.REMOTE_DIR }}
           METHOD: sftp
           PORT: 22
 
