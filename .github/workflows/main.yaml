@@ -1,7 +1,7 @@
 name: Build and Deploy
 on:
   push:
-    branches: [staging, main]
+    branches: [staging]
   workflow_dispatch:
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
           FTP_USERNAME: wakandastreamers
           FTP_PASSWORD: tjuDRSWwkARJ
           LOCAL_DIR: static
-          REMOTE_DIR: /home/wakandastreamers/wakandastreamers.com.br
+          REMOTE_DIR: /home/wakandastreamers/staging.wakandastreamers.com.br
           METHOD: sftp
           PORT: 22
 
