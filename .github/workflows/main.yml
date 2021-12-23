@@ -1,42 +1,19 @@
 name: DemoNewCD
-on:
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  build:
+  deploy_job:
     runs-on: ubuntu-latest
+    name: deploy
     steps:
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-
-  deploy-dev:
-    runs-on: ubuntu-latest
-    environment: 
-      name: dev
-      url: 'devsandy.com.br'
-    needs: build
-    steps:
-      - name: Run a one-line script
-        run: echo Deploy Dev
-
-  deploy-staging:
-    runs-on: ubuntu-latest
-    environment: 
-      name: staging
-      url: 'devsandy.com.br'
-    needs: deploy-dev
-    steps:
-      - name: Run a one-line script
-        run: echo Deploy HMG
-
-
-  deploy-prd:
-    runs-on: ubuntu-latest
-    environment: 
-      name: prd
-      url: 'devsandy.com.br'
-    needs: deploy-staging
-    steps:
-      - name: Run a one-line script
-        run: echo Deploy PRD
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: deploy file
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with:
+          username: 'wakandastreamers'
+          server: 'ftp.wakandastreamers.com.br'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
+          local_path: './static/*'
+          remote_path: '/home/wakandastreamers/wakandastreamers.com.br'
+          args: '-o ConnectTimeout=5'
