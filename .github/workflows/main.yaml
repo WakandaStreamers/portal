@@ -27,7 +27,7 @@ jobs:
           FTP_SERVER: ${{ secrets.SFTP_SERVER }}
           FTP_USERNAME: ${{ secrets.SFTP_USER }}
           FTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-          LOCAL_DIR: static
+          LOCAL_DIR: ./static
           REMOTE_DIR: /home/wakandastreamers/wakandastreamers.com.br/env/stg
           METHOD: sftp
           PORT: 22
