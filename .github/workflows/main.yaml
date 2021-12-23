@@ -38,7 +38,6 @@ jobs:
           REMOTE_DIR: /home/wakandastreamers/wakandastreamers.com.br
           METHOD: sftp
           PORT: 22
-          ARGS: --insecure
 
 
     
