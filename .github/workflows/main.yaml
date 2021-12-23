@@ -29,12 +29,13 @@ jobs:
           name: static
           path: static
       - name: Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
         with:
-          server: 'ftp.wakandastreamers.com.br'
-          username: 'wakandastreamers'
-          password: 'tjuDRSWwkARJ'
-          protocol: ftps-legacy
+          ftp-server: 'ftp.wakandastreamers.com.br'
+          ftp-username: 'wakandastreamers'
+          ftp-password: 'tjuDRSWwkARJ'
+          local-dir: ./static/
+          git-ftp-args: --insecure
 
 
     
