@@ -37,6 +37,7 @@ jobs:
           local_dir: ./static/
           remote_dir: /home/wakandastreamers/wakandastreamers.com.br
           method: sftp
+          port: 22
           args: --insecure
 
 
