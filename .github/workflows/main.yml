@@ -2,22 +2,17 @@ name: Deploy to
 on:
   push:
 jobs:
-  build:
+  deploy:
+    name: 🚀 Deploy website every commit
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./static
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 2
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
 
-
-    - name: FTP Deploy to WP Engine (Staging)
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
-      with:
-        ftp-server: 'ftp.wakandastreamers.com.br'
-        ftp-username: 'wakandastreamers'
-        ftp-password: 'tjuDRSWwkARJ'
-        local-dir: ./static/
+      - name: 📂 Sync files
+        uses: ./
+        with:
+          server: 'ftp.wakandastreamers.com.br'
+          username: 'wakandastreamers'
+          password: 'tjuDRSWwkARJ'
+          protocol: ftps
