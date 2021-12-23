@@ -2,17 +2,32 @@ name: Deploy to
 on:
   push:
 jobs:
-  deploy:
-    name: 🚀 Deploy website every commit
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v2
-
-      - name: 📂 Sync files
-        uses: ./
-        with:
-          server: ftp.wakandastreamers.com.br
-          username: wakandastreamers
-          password: ${{ secrets.SFTP_PASSWORD }}
-          protocol: ftps
+    - uses: actions/checkout@master
+    
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        
+    - name: Build Project
+      run: |
+        npm install
+        npm run build --if-present
+        
+    - name: List output files
+      run: ls
+      
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: ${{ secrets.SFTP_SERVER }}
+        FTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+        FTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+        LOCAL_DIR: build
+        METHOD: sftp
+        PORT: 22
+        ARGS: --delete
