@@ -34,7 +34,7 @@ jobs:
           FTP_SERVER: ftp.wakandastreamers.com.br
           FTP_USERNAME: wakandastreamers
           FTP_PASSWORD: tjuDRSWwkARJ
-          LOCAL_DIR: ./static/
+          LOCAL_DIR: static
           REMOTE_DIR: /home/wakandastreamers/wakandastreamers.com.br
           METHOD: sftp
           PORT: 22
