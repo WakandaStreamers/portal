@@ -21,13 +21,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@staging
-      - name: Download artifact
-        uses: actions/download-artifact@main
-        with:
-          name: static
-          path: static
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
