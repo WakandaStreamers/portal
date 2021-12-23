@@ -31,11 +31,12 @@ jobs:
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         with:
-          ftp-server: 'ftp.wakandastreamers.com.br'
-          ftp-username: 'wakandastreamers'
-          ftp-password: 'tjuDRSWwkARJ'
-          local-dir: ./static/
-          git-ftp-args: --insecure
+          ftp_server: 'ftp.wakandastreamers.com.br'
+          ftp_username: 'wakandastreamers'
+          ftp_password: 'tjuDRSWwkARJ'
+          local_dir: ./static/
+          remote_dir: /home/wakandastreamers/wakandastreamers.com.br
+          args: --insecure
 
 
     
