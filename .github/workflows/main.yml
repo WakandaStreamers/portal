@@ -17,7 +17,7 @@ jobs:
     - name: FTP Deploy to WP Engine (Staging)
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        ftp-server: ${{ secrets.SFTP_SERVER }}
+        ftp-server: 'ftp.wakandastreamers.com.br'
         ftp-username: ${{ secrets.SFTP_USER }}
         ftp-password: ${{ secrets.SFTP_PASSWORD }}
         local-dir: ./static/
